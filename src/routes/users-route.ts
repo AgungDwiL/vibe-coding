@@ -39,6 +39,11 @@ export const usersRoute = new Elysia({ prefix: "/api" })
     }
 
     const token = authHeader.split(' ')[1];
+    if (!token) {
+      set.status = 401;
+      return { error: "Unauthorized" };
+    }
+
     const result = await usersService.getCurrentUser(token);
 
     if (result.error) {
