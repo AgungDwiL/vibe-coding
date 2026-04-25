@@ -63,4 +63,28 @@ export const usersService = {
 
     return { data: token };
   },
+
+  async getCurrentUser(token: string) {
+    // Find session join with user
+    const result = await db
+      .select({
+        user: {
+          id: users.id,
+          name: users.name,
+          email: users.email,
+          createdAt: users.createdAt,
+        },
+      })
+      .from(sessions)
+      .innerJoin(users, eq(sessions.userId, users.id))
+      .where(eq(sessions.token, token))
+      .limit(1)
+      .then((rows) => rows[0]);
+
+    if (!result) {
+      return { error: "Unauthorized" };
+    }
+
+    return { data: result.user };
+  },
 };
