@@ -1,0 +1,9 @@
+update README.md, jelaskan tentang:
+- aplikasi ini, seperti folder dan penamaan file atau struktur file
+- API yang tersedia
+- skema database yang digunakan
+- cara stup project
+- teknologi stack yang digunakan
+- library yang digunakan
+- cara menjalankan (run) aplikasi
+- cara test aplikasi
