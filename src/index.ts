@@ -9,6 +9,15 @@ const app = new Elysia()
         title: 'Vibe Coding API',
         version: '1.0.0',
         description: 'Dokumentasi API untuk aplikasi Vibe Coding'
+      },
+      components: {
+        securitySchemes: {
+          bearerAuth: {
+            type: 'http',
+            scheme: 'bearer',
+            bearerFormat: 'JWT'
+          }
+        }
       }
     }
   }))

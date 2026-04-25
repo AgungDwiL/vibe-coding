@@ -30,7 +30,11 @@ export const usersRoute = new Elysia({ prefix: "/api" })
       name: t.String({ maxLength: 255 }),
       email: t.String({ format: 'email', maxLength: 255 }),
       password: t.String({ maxLength: 255 }),
-    })
+    }),
+    response: {
+      200: t.Object({ data: t.String() }),
+      400: t.Object({ error: t.String() }),
+    }
   })
   
   // Endpoint: Login User
@@ -52,7 +56,11 @@ export const usersRoute = new Elysia({ prefix: "/api" })
     body: t.Object({
       email: t.String({ format: 'email', maxLength: 255 }),
       password: t.String({ maxLength: 255 }),
-    })
+    }),
+    response: {
+      200: t.Object({ data: t.String() }),
+      401: t.Object({ error: t.String() }),
+    }
   })
   
   // Endpoint: Mendapatkan Data User yang Sedang Login
@@ -75,7 +83,19 @@ export const usersRoute = new Elysia({ prefix: "/api" })
     detail: {
       summary: "Get Current User",
       tags: ["Users"],
-      description: "Mengambil data profil pengguna yang sedang login berdasarkan token sesi."
+      description: "Mengambil data profil pengguna yang sedang login berdasarkan token sesi.",
+      security: [{ bearerAuth: [] }]
+    },
+    response: {
+      200: t.Object({
+        data: t.Object({
+          id: t.Number(),
+          name: t.String(),
+          email: t.String(),
+          createdAt: t.Date()
+        })
+      }),
+      401: t.Object({ error: t.String() }),
     }
   })
   
@@ -99,6 +119,11 @@ export const usersRoute = new Elysia({ prefix: "/api" })
     detail: {
       summary: "Logout User",
       tags: ["Auth"],
-      description: "Menghapus token sesi dari database untuk keluar dari sistem."
+      description: "Menghapus token sesi dari database untuk keluar dari sistem.",
+      security: [{ bearerAuth: [] }]
+    },
+    response: {
+      200: t.Object({ data: t.String() }),
+      401: t.Object({ error: t.String() }),
     }
   });
