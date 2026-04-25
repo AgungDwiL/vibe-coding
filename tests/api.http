@@ -26,3 +26,9 @@ Content-Type: application/json
 # Pastikan server berjalan dan ganti <masukkan_token_dari_login_di_sini> dengan token dari response login.
 GET http://localhost:3000/api/users/current
 Authorization: Bearer 357a039b-d192-4c30-be7d-8335b71064b1
+
+###
+
+### Logout User
+DELETE http://localhost:3000/api/users/logout
+Authorization: Bearer 357a039b-d192-4c30-be7d-8335b71064b1
