@@ -20,6 +20,11 @@ export const usersRoute = new Elysia({ prefix: "/api" })
     
     return result;
   }, {
+    detail: {
+      summary: "Registrasi User Baru",
+      tags: ["Users"],
+      description: "Mendaftarkan akun pengguna baru ke sistem."
+    },
     // Validasi input body menggunakan TypeBox (t)
     body: t.Object({
       name: t.String({ maxLength: 255 }),
@@ -38,6 +43,11 @@ export const usersRoute = new Elysia({ prefix: "/api" })
     
     return result;
   }, {
+    detail: {
+      summary: "Login User",
+      tags: ["Auth"],
+      description: "Melakukan login dan mengembalikan token sesi."
+    },
     // Validasi input body untuk login
     body: t.Object({
       email: t.String({ format: 'email', maxLength: 255 }),
@@ -61,6 +71,12 @@ export const usersRoute = new Elysia({ prefix: "/api" })
     }
 
     return result;
+  }, {
+    detail: {
+      summary: "Get Current User",
+      tags: ["Users"],
+      description: "Mengambil data profil pengguna yang sedang login berdasarkan token sesi."
+    }
   })
   
   // Endpoint: Logout User
@@ -79,4 +95,10 @@ export const usersRoute = new Elysia({ prefix: "/api" })
     }
 
     return result;
+  }, {
+    detail: {
+      summary: "Logout User",
+      tags: ["Auth"],
+      description: "Menghapus token sesi dari database untuk keluar dari sistem."
+    }
   });
