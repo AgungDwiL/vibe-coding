@@ -1,0 +1,7 @@
+Buatkan issue.md yang berisi perencanaan untuk nanti diimplementasikan oleh Junior Programmer atau AI model yang lebih murah. Simpan di dalam folder doc/issue dan ikuti format penamaan yang sudah ada.
+
+Isi dari planning nya adalah sebagai berikut:
+
+Saya mau menambahkan fitur swagger di project ini. agar user lain yang mau menggunkan API di app ini lebuh mudah tinggal membuka swagger nya.
+
+Buat tahapan-tahapan yang harus dilakukan untuk implementasi fitur ini, jelaskan secara detail dengan target adalah junior programmer atau model yang lebih murah.
